@@ -6,4 +6,4 @@ install:
     - docker-compose up --build -d
     - sleep 10
 script:
-    - pytest
+    - pytest test1.py
