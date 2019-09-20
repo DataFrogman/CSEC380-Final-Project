@@ -37,3 +37,18 @@ Github issues will be used to represent user stories.
 We will be using TravisCI with pytest for the testing, nginx with $frontend will used for the front end, Docker will be used for the
 hosting, and python/flask for the backed.
 
+## Mockups
+JS Flow Chart
+<img width="346" alt="JS Diagram" src="https://user-images.githubusercontent.com/28633919/65356974-bdbe9400-dbc3-11e9-8786-e58e681190dd.PNG">
+
+Network Topology
+<img width="444" alt="Network Topology" src="https://user-images.githubusercontent.com/28633919/65357063-f5c5d700-dbc3-11e9-9251-0d837e596aa1.PNG">
+
+Use Case Flow Chart
+<img width="320" alt="Use Case Flow Chart" src="https://user-images.githubusercontent.com/28633919/65357110-14c46900-dbc4-11e9-9789-d13efbb97756.PNG">
+
+Database Schema
+<img width="283" alt="Database schema" src="https://user-images.githubusercontent.com/28633919/65357171-463d3480-dbc4-11e9-9ce3-ca6eddab4275.PNG">
+
+State Diagram
+<img width="359" alt="state diagram" src="https://user-images.githubusercontent.com/28633919/65357196-5ead4f00-dbc4-11e9-8e19-9663d12ca3c4.PNG">
