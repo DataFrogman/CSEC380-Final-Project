@@ -37,6 +37,9 @@ Github issues will be used to represent user stories.
 We will be using TravisCI with pytest for the testing, nginx with $frontend will used for the front end, Docker will be used for the
 hosting, and python/flask for the backed.
 
+## Mock Website
+https://tigeradvanced.invisionapp.com/prototype/Tiger-Advance-ck0mvvszu005lwt01yzozzjoj/play/032a5d58?v=fVdCFlqMC93fTkKlJbKx3w%3D%3D&linkshare=urlcopied
+
 ## Mockups
 JS Flow Chart
 <img width="346" alt="JS Diagram" src="https://user-images.githubusercontent.com/28633919/65356974-bdbe9400-dbc3-11e9-8786-e58e681190dd.PNG">
