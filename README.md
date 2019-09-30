@@ -6,7 +6,7 @@ Sprint | Activity | Description | Due Date | Completion
 --- | --- | --- | --- | ---
 1 | 1 | Setup Github | September 20th | Yes
 1 | 2 | Generate Tests/Initial Splashpage | September 20th (Due Date) | Yes
-1 | 1/2 | Writeup for Activities 1 and 2 | September 20th (Due Date) | Activity 1
+1 | 1/2 | Writeup for Activities 1 and 2 | September 20th (Due Date) | Yes
 2 | 3 | Authentication to the website | September 29th | No
 2 | 3 | Tests for authentication | September 29th | No
 2 | 3 | Writeup for  activity 3 | September 29th | No
