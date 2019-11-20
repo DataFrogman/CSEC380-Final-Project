@@ -46,6 +46,7 @@ cursor.execute("INSERT INTO users(Username, Password, TotalVids, DateCreated) VA
 
 testuser2 = 'test'
 testuser2hashedpass = generate_password_hash('test')
+#cursor, conn = connection()
 cursor.execute("INSERT INTO users(Username, Password, TotalVids, DateCreated) VALUES \
             ('{}', '{}', 0, '{}')".format(testuser2, testuser2hashedpass, datetime.datetime.now().strftime('%Y-%m-%d')))
 
