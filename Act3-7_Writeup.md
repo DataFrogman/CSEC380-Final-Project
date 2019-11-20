@@ -10,11 +10,11 @@ ANSWER
 3. How do you protect against session fixation?
 ANSWER
 4. How do you ensure that if your database gets stolen passwords aren’t exposed?
-ANSWER
+The passwords are hashed so that if the database is stolen it will be extremely difficult to figure out what the passwords are.
 5. How do you prevent password brute force?
-ANSWER
+We limit the number of connections on a minutely/hourly/daily basis.
 6. How do you prevent username enumeration?
-ANSWER
+We have a "Incorrect Credentials" page for if your username OR password is wrong, this way the attacker can't tell if they have a valid username or not because the response will be the same.
 7. What happens if your sessionID is predictable, how do you prevent that?
 ANSWER
 
