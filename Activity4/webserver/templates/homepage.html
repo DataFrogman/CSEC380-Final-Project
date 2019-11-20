@@ -9,11 +9,16 @@
 <h2>TIGER ADVANCED</h2>
 <div class="btn-group">
     <button>Home</button>
-    <button>Upload</button>
     <button>Manage</button>
-    <button>Log Out</button>
+    <button><a href="/logout" style="float: center;">Log Out</a></button>
 </div>
-<hr>
+<div class="uploads">
+    <form method=post enctype=multipart/form-data>
+        <p>Upload from Computer or Upload from Link</p>
+        Upload from Computer:  <input type=file name=file><br>
+        Upload from Link:      <input type="text" name="linkupload"><br>
+        <input type=submit value=Upload>
+</div>
 <div class="vids">
     <div class="vidgroup">
     <tr>

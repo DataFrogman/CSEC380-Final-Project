@@ -81,10 +81,10 @@ def mainpage():
                     cursor.execute("SELECT UserID FROM users WHERE Username='{}'".format((session['username'])))
                     userid = cursor.fetchone()
                     print(userid, file=sys.stderr)
-                    cursor.execute("INSERT INTO video(UserID, VideoTitle, VideoUser, VideoURL, DateUploaded) VALUES \
+                    cursor.execute("INSERT INTO videos(UserID, VideoTitle, VideoURL, VideoUser, DateUploaded) VALUES \
                         ('{}', '{}', '{}', '{}', '{}')".format(userid[0], localfile, \
                         str(destination), session['username'], datetime.datetime.now().strftime('%Y-%m-%d')))
-                    cursor.execute("UPDATE users SET TotalVideoCount = TotalVideoCount + \
+                    cursor.execute("UPDATE users SET TotalVids = TotalVids + \
                         1 WHERE Username = '{}'".format(str(session['username'])))
                     conn.commit()
                     cursor.close()
@@ -101,10 +101,11 @@ def mainpage():
                     f.save(destination)
                     cursor.execute("SELECT UserID FROM users WHERE Username='{}'".format((session['username'])))
                     userid = cursor.fetchone()
-                    cursor.execute("INSERT INTO video(UserID, VideoTitle, VideoURL, VideoUser, DateUploaded) VALUES \
+                    print(session['username'])
+                    cursor.execute("INSERT INTO videos(UserID, VideoTitle, VideoURL, VideoUser, DateUploaded) VALUES \
                         ('{}', '{}', '{}', '{}', '{}')".format(userid[0], filename, \
                         str(destination), session['username'], datetime.datetime.now().strftime('%Y-%m-%d')))
-                    cursor.execute("UPDATE users SET TotalVideoCount = TotalVideoCount + \
+                    cursor.execute("UPDATE users SET TotalVids = TotalVids + \
                         1 WHERE Username = '{}'".format(str(session['username'])))
                     conn.commit()
                     cursor.close()
