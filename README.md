@@ -10,8 +10,8 @@ Sprint | Activity | Description | Due Date | Completion
 2 | 3 | Authentication to the website | September 29th | Yes
 2 | 3 | Tests for authentication | September 29th | Backlog
 2 | 3 | Writeup for  activity 3 | September 29th | Backlog
-3 | 4 | Content can be uploaded | October 13th | Backlog
-3 | 4 | Content and metadata can be viewed | October 13th | Backlog
+3 | 4 | Content can be uploaded | October 13th | Yes
+3 | 4 | Content and metadata can be viewed | October 13th | Yes
 3 | 4 | Content can be deleted by uploading user | October 13th | Backlog
 3 | 4 | Tests for uploading, viewing, and deletion | October 13th | Backlog
 3 | 4 | Writeup for activity 4 | October 13th | Backlog
