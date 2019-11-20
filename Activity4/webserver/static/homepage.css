@@ -1,0 +1,103 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: lightgray;
+  }
+  form {border: 3px solid #f1f1f1;}
+  
+  h2 {
+    color: #000;
+    font-family: Calibri;
+    font-size: 75px;
+    line-height: 60px;
+    text-align: center;
+  }
+  
+  input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  }
+
+  .btn-group button {
+    background-color: gray; 
+    border: 1px solid black; 
+    color: white; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+    width: 25%;
+  }
+
+  /* Clear floats (clearfix hack) */
+.btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  .btn-group button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+  }
+  
+  /* Add a background color on hover */
+  .btn-group button:hover {
+    background-color: orange;
+  }
+  
+  .imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  }
+  
+  img.avatar {
+  width: 40%;
+  border-radius: 50%;
+  }
+  
+  .vids {
+    height: 677px;
+    width: 1210px;
+  }
+
+  .vidgroup {
+    height: 186px;
+    width: 1210px;
+  }
+
+  .indv-vid {
+    height: 186px;
+    width: 260px;
+  }
+
+  .indv-vid:after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  h3 {
+    height: 30px;
+    width: 280px;
+    color: #000;
+    font-family: Calibri;
+    font-size: 30px;
+    line-height: 30px;
+    float: right;
+  }
+
+  .rectangle {
+    box-sizing: border-box;
+    height: 182px;
+    width: 300px;
+    background-color: #BDBDBD;
+    border: 2px solid #808080;
+    float: right;
+  }
+
+  th, td {
+    padding: 10px;
+    border: 1px solid #666;
+  }
