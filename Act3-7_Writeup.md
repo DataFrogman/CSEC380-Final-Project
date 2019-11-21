@@ -2,7 +2,7 @@
 
 Adrianna Visca, Quintin Walters, Nic Brockman, and Patrick Swanson-Green
 
-## Activity 3:
+## Activity 3: Authentication
 1. Provide a link to the test cases you generated for this activity.
 
 ANSWER
@@ -32,7 +32,7 @@ We have a "Incorrect Credentials" page for if your username OR password is wrong
 ANSWER
 
 
-## Activity 4:
+## Activity 4: Content
 
 1. How do you prevent XSS in this step when displaying the username of the user who uploaded the video?
 
@@ -43,7 +43,7 @@ ANSWER
 ANSWER
 
 
-## Activity 5:
+## Activity 5: SQL Injection
 
 1. How would you fix your code so that these issues were no longer present (SQL Injection)?
 
@@ -54,7 +54,7 @@ ANSWER
 ANSWER
 
 
-## Activity 6:
+## Activity 6: SSRF
 
 1. How would you fix your code so that this issue is no longer present (SSRF)?
 
@@ -65,7 +65,7 @@ ANSWER
 ANSWER
 
 
-## Activity 7:
+## Activity 7: Command Injection
 
 1. How would you fix your code so that this issue is no longer present (Command Injection)?
 
