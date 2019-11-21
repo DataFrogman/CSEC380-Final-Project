@@ -2,7 +2,7 @@
 
 Adrianna Visca, Quintin Walters, Nic Brockman, and Patrick Swanson-Green
 
-# Activity 3:
+## Activity 3:
 1. Provide a link to the test cases you generated for this activity.
 
 ANSWER
@@ -45,7 +45,7 @@ ANSWER
 
 ## Activity 5:
 
-1. How would you fix your code so that these issues were no longer present SQL Injection)?
+1. How would you fix your code so that these issues were no longer present (SQL Injection)?
 
 ANSWER
 
