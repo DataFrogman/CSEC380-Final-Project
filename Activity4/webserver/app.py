@@ -123,6 +123,16 @@ def mainpage():
         conn.close()
     return redirect(url_for('login'))
 
+@app.route("/video", methods=['POST'])
+def video():
+    cursor, conn = connection()
+    if 'username' in session:
+        url = request.form["videoURL"]
+        
+        return render_template("video_viewer.html", videoURL=url)
+    else:
+        return redirect(url_for("login"))
+
 def getvideos(cursor, conn):
     json_data=[]
     cursor.execute("SELECT * FROM videos")
