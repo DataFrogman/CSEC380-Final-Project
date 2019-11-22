@@ -64,10 +64,10 @@ def mainpage():
     cursor, conn = connection()
     if 'username' in session:
         videos=[]
-        videos = getvideos()
-        videos.append(getothervideos())
+        videos = getvideos(cursor, conn)
+        # videos.append(getothervideos())
         if request.method == "POST":
-            target = os.path.join(APP_ROOT, "static")
+            target = "static"
             link = request.form.get('linkupload', None)
             if link != "" and link is not None:
                 localfile = link.split('/')[-1]
@@ -123,28 +123,15 @@ def mainpage():
         conn.close()
     return redirect(url_for('login'))
 
-def getvideos():
-    cursor, conn = connection()
-    if session.get('username'):
-        username = request.get_json(force=True)
-        print(username)
-        username = username['username']
-        print("username is " + str(username), file=sys.stderr)
-        cursor.execute("SELECT UserID FROM users WHERE Username='{}'".format(username))
-        userid = cursor.fetchone()
-        cursor.execute("SELECT * FROM video WHERE UserID={}".format(userid[0]))
-        rows = cursor.fetchall()
-        row_headers=[x[0] for x in cursor.description]
-        json_data=[]
-        for result in rows:
-            json_data.append(dict(zip(row_headers,result)))
-        print(json_data, file=sys.stderr)
-        cursor.close()
-        conn.close()
-        return jsonify(json_data)
-    cursor.close()
-    conn.close()
-    return redirect(url_for('login'))
+def getvideos(cursor, conn):
+    json_data=[]
+    cursor.execute("SELECT * FROM videos")
+    rows = cursor.fetchall()
+    row_headers=[x[0] for x in cursor.description]
+    for result in rows:
+        json_data.append(dict(zip(row_headers,result)))
+    print(json_data, file=sys.stderr)
+    return json_data
 
 def getothervideos():
     cursor, conn = connection()

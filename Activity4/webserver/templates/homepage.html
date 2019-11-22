@@ -21,34 +21,20 @@
 </div>
 <div class="vids">
     <div class="vidgroup">
-        <p>{{ videos }}</p>
-        {% for video in videos %}
-            <p>{{ video }}</p>
-        {% endfor %}
-    <tr>
-        <td><div class="rectangle"></div></td>
-        <td><div class="rectangle"></div></td>
-        <td><div class="rectangle"></div></td>
         
-    </tr>
     <tr>
-        <td><h3>Author, Time</h3></td>
-        <td><h3>Author, Time</h3></td>
-        <td><h3>Author, Time</h3></td>
-        <td><h3>Author, Time</h3></td>
-    </tr>
-    <tr>
-        <td><div class="rectangle"></div></td>
-        <td><div class="rectangle"></div></td>
-        <td><div class="rectangle"></div></td>
-        <td><div class="rectangle"></div></td>
-    </tr>
-    <tr>
-        <td><h3>Author, Time</h3></td>
-        <td><h3>Author, Time</h3></td>
-        <td><h3>Author, Time</h3></td>
-        <td><h3>Author, Time</h3></td>
-    </tr>
+        {% for video in videos %}
+        <td>
+            <section>
+                <!-- <form action="/video" method="POST" style="border: none;"> -->
+                    <a href="{{ video.get("VideoURL") }}"><img src="static/play_button.png" style="width: 400px;height: 290px;background-size: 100%;"></a>
+                    <input type="hidden" name="videoURL" value="{{ video.get("VideoURL") }}" >
+                    <!-- <button style="background: url(static/play_button.png);width: 400px;height: 290px;background-size: 100%;"></button> -->
+                <!-- </form> -->
+                <p> {{ video.get("VideoUser") }}, {{ video.get("DateUploaded") }}</a></p>
+            </section>
+        </td>
+        {% endfor %}
     </div>
 </div>
 </hr>
