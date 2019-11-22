@@ -63,6 +63,9 @@ def home():
 def mainpage():
     cursor, conn = connection()
     if 'username' in session:
+        videos=[]
+        videos = getvideos()
+        videos.append(getothervideos())
         if request.method == "POST":
             target = os.path.join(APP_ROOT, "static")
             link = request.form.get('linkupload', None)
@@ -74,7 +77,7 @@ def mainpage():
                 with open(destination, 'wb') as f:
                     if not localfile.endswith(".mp4"):
                         flash("Only MP4 files are supported, sorry!")
-                        return render_template('homepage.html', username = session['username'])
+                        return render_template('homepage.html', username = session['username'], videos = videos)
                     destination = "/".join([target, localfile])
                     print("Storing in database . . . " + destination, file=sys.stderr)
                     shutil.copyfileobj(r.raw, f)
@@ -89,13 +92,13 @@ def mainpage():
                     conn.commit()
                     cursor.close()
                     conn.close()
-                    return render_template('homepage.html', username = session['username'])
+                    return render_template('homepage.html', username = session['username'], videos = videos)
             else:
                 for f in request.files.getlist("file"):
                     filename = f.filename
                     if not filename.endswith(".mp4"):
                         flash("Please upload a file with .mp4 extension.")
-                        return render_template('homepage.html', username = session['username'])
+                        return render_template('homepage.html', username = session['username'], videos = videos)
                     destination = "/".join([target, filename])
                     print("Storing in database . . . " + destination, file=sys.stderr)
                     f.save(destination)
@@ -110,17 +113,16 @@ def mainpage():
                     conn.commit()
                     cursor.close()
                     conn.close()
-                    return render_template('homepage.html', username = session['username'])
+                    return render_template('homepage.html', username = session['username'], videos = videos)
         cursor.close()
         conn.close()
-        return render_template('homepage.html', username = session['username'])
+        return render_template('homepage.html', username = session['username'], videos = videos)
         #return render_template('homepage.html')
     else:
         cursor.close()
         conn.close()
     return redirect(url_for('login'))
 
-@app.route("/getvideos", methods=['GET','POST'])
 def getvideos():
     cursor, conn = connection()
     if session.get('username'):
@@ -144,7 +146,6 @@ def getvideos():
     conn.close()
     return redirect(url_for('login'))
 
-@app.route("/getothervideos", methods=['GET','POST'])
 def getothervideos():
     cursor, conn = connection()
     if 'username' in session:
