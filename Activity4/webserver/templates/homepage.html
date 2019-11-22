@@ -21,11 +21,15 @@
 </div>
 <div class="vids">
     <div class="vidgroup">
+        <p>{{ videos }}</p>
+        {% for video in videos %}
+            <p>{{ video }}</p>
+        {% endfor %}
     <tr>
         <td><div class="rectangle"></div></td>
         <td><div class="rectangle"></div></td>
         <td><div class="rectangle"></div></td>
-        <td><div class="rectangle"></div></td>
+        
     </tr>
     <tr>
         <td><h3>Author, Time</h3></td>
