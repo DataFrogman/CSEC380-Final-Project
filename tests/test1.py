@@ -5,7 +5,7 @@ import requests
 #     r = requests.get("http://localhost:8080")
 #     assert "Tiger Advanced" in r.text
 
-def AuthTest():
+def test_AuthTest():
     data = {'username': 'test', 'password': 'test'}
     r = requests.get("http://localhost:8080/login", data=data)
     print("Authentication tests----------------")
