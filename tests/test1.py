@@ -2,7 +2,7 @@ import pytest
 import requests
 
 def test_mytest():
-    r = requests.get("http:/localhost:8080")
+    r = requests.get("http://localhost:8080")
     assert "Tiger Advanced" in r.text
 
 def AuthTest():
