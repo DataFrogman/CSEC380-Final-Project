@@ -226,11 +226,7 @@ def login():
     cursor.execute("SELECT Username, Password FROM users WHERE Username='{}'".format(str(username)))
 
     #switched to fetchall
-    result = cursor.fetchall()
-    for item in result:
-        if item[0] == username and item[1] == hashedpass:
-            hashedpass = item[1]
-            break
+    result = cursor.fetchone()
     #print(userid, file=sys.stderr)
     #print(password, file=sys.stderr)
     #print(hashedpass, file=sys.stderr)
@@ -240,7 +236,7 @@ def login():
         conn.commit()
         conn.close()
         return render_template('invalidcreds.html')
-    elif check_password_hash(username, password):
+    elif check_password_hash(result[0], password):
         cursor.close()
         conn.close()
         session['username'] = username
