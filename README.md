@@ -15,8 +15,8 @@ Sprint | Activity | Description | Due Date | Completion
 3 | 4 | Content can be deleted by uploading user | October 13th | Backlog
 3 | 4 | Tests for uploading, viewing, and deletion | October 13th | Backlog
 3 | 4 | Writeup for activity 4 | October 13th | Backlog
-4 | 5 | Classic SQL Injection vulnerability | October 27th | Backlog
-4 | 5 | Blind SQL Injection vulnerability | October 27th | Backlog
+4 | 5 | Classic SQL Injection vulnerability | October 27th | Yes
+4 | 5 | Blind SQL Injection vulnerability | October 27th | Yes
 4 | 5 | Tests for sql injections | October 27th | Backlog
 4 | 5 | Writeup for activity 5 | October 27th | Backlog
 5 | 6 | Introduce Server Side Request Forgery Vulnerability | November 10th | Backlog
