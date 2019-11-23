@@ -127,9 +127,12 @@ def mainpage():
 def video():
     cursor, conn = connection()
     if 'username' in session:
-        url = request.form["videoURL"]
+        videoURL = request.form["videoURL"]
+        videoTitle = request.form["videoTitle"]
+        videoUser = request.form["videoUser"]
+        dateUploaded = request.form["dateUploaded"]
         
-        return render_template("video_viewer.html", videoURL=url)
+        return render_template("video_viewer.html", videoURL=videoURL, videoTitle=videoTitle, videoUser=videoUser, dateUploaded=dateUploaded)
     else:
         return redirect(url_for("login"))
 
