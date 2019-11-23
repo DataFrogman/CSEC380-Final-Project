@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to Tiger Advanced</title>
+    <link rel="stylesheet" href="/static/homepage.css" type="text/css">
+</head>
+<body>
+
+<h2>TIGER ADVANCED</h2>
+<div class="btn-group">
+    <button>Home</button>
+    <button>Manage</button>
+    <form action="/logout" method="GET"><button>Log Out</button></form>
+</div>
+<div class="uploads">
+    <form method=post enctype=multipart/form-data>
+        <p>Upload from Computer or Upload from Link</p>
+        Upload from Computer:  <input type=file name=file><br>
+        Upload from Link:      <input type="text" name="linkupload"><br>
+        <input type=submit value=Upload>
+</div>
+<div class="vids">
+    <div class="vidgroup">
+        
+    <tr>
+        {% for video in videos %}
+        <td>
+            <section>
+                <form action="/video" method="POST" style="border: none;">
+                    <input type="hidden" name="videoURL" value="{{ video.get('VideoURL') }}">
+                    <input type="hidden" name="videoTitle" value="{{ video.get('VideoTitle') }}">
+                    <input type="hidden" name="videoUser" value="{{ video.get('VideoUser') }}">
+                    <input type="hidden" name="dateUploaded" value="{{ video.get('DateUploaded') }}">
+                    <button style="background: url(static/play_button.png);width: 400px;height: 290px;background-size: 100%;"></button>
+                 </form>
+                <p> {{ video.get("VideoUser") }}, {{ video.get("DateUploaded") }}</p>
+            </section>
+        </td>
+        {% endfor %}
+    </div>
+</div>
+</hr>
+</body>
+</html>
