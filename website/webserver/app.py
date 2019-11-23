@@ -222,7 +222,13 @@ def login():
     cursor, conn = connection()
 
     #switched to Username, Password
+    select_stat = ("IF EXISTS SELECT Username, Password FROM users WHERE Username='{}'".format(str(username))
+        "BEGIN"
+            "SELECT Username, Password FROM users WHERE Username='{}'".format(str(username))"
+        "END"
+    )
     cursor.execute("SELECT Username, Password FROM users WHERE Username='{}'".format(str(username)))
+
     #switched to fetchall
     result = cursor.fetchall()
     for item in result:
