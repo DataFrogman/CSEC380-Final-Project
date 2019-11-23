@@ -2,7 +2,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: lightgray;
   }
-  form {border: 3px solid #f1f1f1;}
+  form {border: none;}
   
   h2 {
     color: #000;

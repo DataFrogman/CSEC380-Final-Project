@@ -27,10 +27,13 @@
         <td>
             <section>
                 <form action="/video" method="POST" style="border: none;">
-                    <input type="hidden" name="videoURL" value="{{ video.get("VideoURL") }}" >
+                    <input type="hidden" name="videoURL" value="{{ video.get('VideoURL') }}">
+                    <input type="hidden" name="videoTitle" value="{{ video.get('VideoTitle') }}">
+                    <input type="hidden" name="videoUser" value="{{ video.get('VideoUser') }}">
+                    <input type="hidden" name="dateUploaded" value="{{ video.get('DateUploaded') }}">
                     <button style="background: url(static/play_button.png);width: 400px;height: 290px;background-size: 100%;"></button>
                  </form>
-                <p> {{ video.get("VideoUser") }}, {{ video.get("DateUploaded") }}</a></p>
+                <p> {{ video.get("VideoUser") }}, {{ video.get("DateUploaded") }}</p>
             </section>
         </td>
         {% endfor %}
