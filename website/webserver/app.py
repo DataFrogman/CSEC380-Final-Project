@@ -127,9 +127,12 @@ def mainpage():
 def video():
     cursor, conn = connection()
     if 'username' in session:
-        url = request.form["videoURL"]
+        videoURL = request.form["videoURL"]
+        videoTitle = request.form["videoTitle"]
+        videoUser = request.form["videoUser"]
+        dateUploaded = request.form["dateUploaded"]
         
-        return render_template("video_viewer.html", videoURL=url)
+        return render_template("video_viewer.html", videoURL=videoURL, videoTitle=videoTitle, videoUser=videoUser, dateUploaded=dateUploaded)
     else:
         return redirect(url_for("login"))
 
@@ -217,6 +220,7 @@ def login():
     password = request.form['password']
     hashedpass = generate_password_hash(password)
     cursor, conn = connection()
+
     #switched to Username, Password
     cursor.execute("SELECT Username, Password FROM users WHERE Username='{}'".format(str(username)))
     #switched to fetchall
@@ -234,7 +238,9 @@ def login():
         conn.commit()
         conn.close()
         return render_template('invalidcreds.html')
+
     elif check_password_hash(item[1], password):
+
         cursor.close()
         conn.close()
         session['username'] = username
@@ -242,9 +248,11 @@ def login():
     cursor.close()
     conn.commit()
     conn.close()
+
     if str(username) in result:
         return render_template('invalidcreds.html')
     return render_template('invalidcreds.html', error=result)
+
 
 @app.route("/logout", methods=['GET','POST'])
 def logout():
