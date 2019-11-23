@@ -14,11 +14,11 @@ def test_AuthTest():
 
     data = {'username': 'testwrong', 'password': 'test'}
     r = requests.post("http://127.0.0.1:8080/login", data=data)
-    assert 'Invalid' in r.text
+    assert 'Invalid' in r.content.decode('UTF-8')
     print("Wrong username authentication: passed")
 
     data = {'username': 'test', 'password': 'testwrong'}
     r = requests.post("http://127.0.0.1:8080/login", data=data)
-    assert 'Invalid' in r.text
+    assert 'Invalid' in r.content.decode('UTF-8')
     print("Wrong password authentication: passed")
 
