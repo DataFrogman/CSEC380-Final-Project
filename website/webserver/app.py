@@ -240,7 +240,7 @@ def login():
         conn.commit()
         conn.close()
         return render_template('invalidcreds.html')
-    elif check_password_hash(hashedpass, password):
+    elif check_password_hash(username, password):
         cursor.close()
         conn.close()
         session['username'] = username
