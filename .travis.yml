@@ -7,6 +7,7 @@ before_install:
 install:
     - pip3 install pytest
     - pip3 install requests
+    - pip3 install pyopenssl ndg-httpsclient pyasn1
     - sleep 20
 script:
     - pytest tests/test1.py
