@@ -17,7 +17,7 @@ def AuthTest():
     assert 'Invalid' in r.text
     print("Wrong username authentication: passed")
 
-     data = {'username': 'test', 'password': 'testwrong'}
+    data = {'username': 'test', 'password': 'testwrong'}
     r = requests.get("http://127.0.0.1:8080", data=data)
     assert 'Invalid' in r.text
     print("Wrong password authentication: passed")
