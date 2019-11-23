@@ -8,4 +8,4 @@ install:
     - pip3 install request
     - sleep 20
 script:
-    - pytest test1.py
+    - pytest tests/test1.py
