@@ -9,5 +9,8 @@
 <div class="imgcontainer">
 <img src="/static/tiger_sad.png" alt="Avatar" class="avatar">
 </div>
+{% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+{% endif %}
 </body>
 </html>
