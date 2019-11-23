@@ -2,7 +2,7 @@ language: python
 python:
     - "3.7"
 before_install:
-    docker-compose -f ./website/docker-compose.yml build -d
+    docker-compose -f ./website/docker-compose.yml build
     - docker-compose -f ./website/docker-compose.yml up -d
 install:
     - pip3 install pytest
