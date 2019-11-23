@@ -1,5 +1,6 @@
 import pytest
 import requests
+from werkzeug.security import generate_password_hash, check_password_hash
 
 # def test_mytest():
 #     r = requests.get("http://localhost:8080")
