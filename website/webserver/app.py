@@ -222,6 +222,7 @@ def login():
     cursor, conn = connection()
 
     #switched to Username, Password
+
     cursor.execute("SELECT Username, Password FROM users WHERE Username='{}'".format(str(username)))
 
     #switched to fetchall
@@ -239,9 +240,7 @@ def login():
         conn.commit()
         conn.close()
         return render_template('invalidcreds.html')
-
-    elif check_password_hash(item[1], password):
-
+    elif check_password_hash(hashedpass, password):
         cursor.close()
         conn.close()
         session['username'] = username
