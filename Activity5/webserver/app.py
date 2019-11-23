@@ -217,18 +217,24 @@ def login():
     password = request.form['password']
     hashedpass = generate_password_hash(password)
     cursor, conn = connection()
-    cursor.execute("SELECT Password FROM users WHERE Username='{}'".format(str(username)))
-    userpass = cursor.fetchone()
-    print(userpass, file=sys.stderr)
-    print(password, file=sys.stderr)
-    print(hashedpass, file=sys.stderr)
+    #switched to Username, Password
+    cursor.execute("SELECT Username, Password FROM users WHERE Username='{}'".format(str(username)))
+    #switched to fetchall
+    result = cursor.fetchall()
+    for item in result:
+        if item[0] == username and item[1] == hashedpass:
+            hashedpass = item[1]
+            break
+    #print(userid, file=sys.stderr)
+    #print(password, file=sys.stderr)
+    #print(hashedpass, file=sys.stderr)
     
-    if userpass == None:
+    if result == None:
         cursor.close()
         conn.commit()
         conn.close()
         return render_template('invalidcreds.html')
-    elif check_password_hash(userpass[0], password):
+    elif check_password_hash(item[1], password):
         cursor.close()
         conn.close()
         session['username'] = username
@@ -236,7 +242,9 @@ def login():
     cursor.close()
     conn.commit()
     conn.close()
-    return redirect(url_for('invalidcreds'))
+    if str(username) in result:
+        return render_template('invalidcreds.html')
+    return render_template('invalidcreds.html', error=result)
 
 @app.route("/logout", methods=['GET','POST'])
 def logout():
