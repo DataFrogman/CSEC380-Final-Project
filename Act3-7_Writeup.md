@@ -13,7 +13,7 @@ ANSWER
 
 3. How do you protect against session fixation?
 
-ANSWER
+We proect against session fixation by not passing session IDs in GET/POST variables.
 
 4. How do you ensure that if your database gets stolen passwords aren’t exposed?
 
@@ -47,11 +47,11 @@ Checking if the UserID of the user logged is the same as the video owner.
 
 1. How would you fix your code so that these issues were no longer present (SQL Injection)?
 
-ANSWER
+The fix to our code would be removing any spots where the invalidcreds.html page was being rendered by sending the results database.
 
 2. What are the limitations, if any that, of the SQL Injection issues you’ve included? 
 
-ANSWER
+The limitations of the SQL injection issues we've included is that the database will only be dumped if you have a correct username or completely incorrect credentials. If you have a correct password, you will see no extra data on the invalidcreds page. 
 
 
 ## Activity 6: SSRF
