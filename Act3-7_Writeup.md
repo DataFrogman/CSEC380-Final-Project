@@ -58,7 +58,7 @@ The limitations of the SQL injection issues we've included is that the database 
 
 1. How would you fix your code so that this issue is no longer present (SSRF)?
 
-ANSWER
+Adding filename (.mp4) sanitization to the manage function would fix the code so that SSRF is no longer present.
 
 2. How does your test demonstrate SSRF as opposed to just accessing any old endpoint?
 
