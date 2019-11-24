@@ -36,7 +36,7 @@ If it is predictable an attacker could duplicate the ID to take over the user, y
 
 1. How do you prevent XSS in this step when displaying the username of the user who uploaded the video?
 
-ANSWER
+We prevent XSS in this step by always checking for not only username but also userID.
 
 2. How do you ensure that users can’t delete videos that aren’t their own?
 
@@ -62,11 +62,11 @@ Adding filename (.mp4) sanitization to the manage function would fix the code so
 
 2. How does your test demonstrate SSRF as opposed to just accessing any old endpoint?
 
-ANSWER
+The test demonstrates SSRF because the bash script is executed when uploaded. 
 
 
 ## Activity 7: Command Injection
 
 1. How would you fix your code so that this issue is no longer present (Command Injection)?
 
-ANSWER
+We would fix the section of code responsible for deleting videos so that when one video is deleted it is just removed without the command rm.
