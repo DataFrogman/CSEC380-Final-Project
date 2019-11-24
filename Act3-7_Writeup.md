@@ -29,7 +29,7 @@ We have a "Incorrect Credentials" page for if your username OR password is wrong
 
 7. What happens if your sessionID is predictable, how do you prevent that?
 
-ANSWER
+If it is predictable an attacker could duplicate the ID to take over the user, you can prevent this by randomizing the sessionID each login.
 
 
 ## Activity 4: Content
