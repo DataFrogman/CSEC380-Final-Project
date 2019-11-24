@@ -13,7 +13,7 @@ ANSWER
 
 3. How do you protect against session fixation?
 
-We proect against session fixation by not passing session IDs in GET/POST variables.
+We protect against session fixation by not passing session IDs in GET/POST variables.
 
 4. How do you ensure that if your database gets stolen passwords aren’t exposed?
 
