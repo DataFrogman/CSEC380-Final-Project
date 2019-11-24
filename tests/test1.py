@@ -2,9 +2,9 @@ import pytest
 import requests
 import time
 
-# def test_mytest():
-#     r = requests.get("http://localhost:8080")
-#     assert "Tiger Advanced" in r.text
+def test_mytest():
+    r = requests.get("http://localhost:8080")
+    assert "Tiger Advanced" in r.text
 
 def test_AuthTest():
     data = {'username': 'test', 'password': 'test'}
@@ -25,3 +25,7 @@ def test_AuthTest():
     assert 'Invalid' in r.content.decode('UTF-8')
     print("Wrong password authentication: passed")
 
+def test_uploadVid():
+    data = {'username': 'test', 'password': 'test'}
+    r = requests.post("http://127.0.0.1:8080/login", data=data)
+    

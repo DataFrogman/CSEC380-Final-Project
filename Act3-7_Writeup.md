@@ -5,7 +5,7 @@ Adrianna Visca, Quintin Walters, Nic Brockman, and Patrick Swanson-Green
 ## Activity 3: Authentication
 1. Provide a link to the test cases you generated for this activity.
 
-ANSWER
+https://github.com/DataFrogman/CSEC380-Final-Project/blob/master/tests/test1.py
 
 2. How do you ensure that users that navigate to the protected pages cannot bypass authentication requirements?
 
@@ -40,7 +40,7 @@ ANSWER
 
 2. How do you ensure that users can’t delete videos that aren’t their own?
 
-ANSWER
+Checking if the UserID of the user logged is the same as the video owner.
 
 
 ## Activity 5: SQL Injection
