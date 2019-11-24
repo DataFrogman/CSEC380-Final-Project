@@ -2,10 +2,12 @@ language: python
 python:
     - "3.7"
 before_install:
+    - docker-compose -f ./website/docker-compose.yml build
     - docker-compose -f ./website/docker-compose.yml up -d
 install:
     - pip3 install pytest
     - pip3 install requests
-    - sleep 20
+    - pip3 install pyopenssl ndg-httpsclient pyasn1
+    - sleep 50
 script:
     - pytest tests/test1.py
