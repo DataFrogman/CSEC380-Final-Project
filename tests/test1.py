@@ -28,4 +28,8 @@ def test_AuthTest():
 def test_uploadVid():
     data = {'username': 'test', 'password': 'test'}
     r = requests.post("http://127.0.0.1:8080/login", data=data)
-    
+    data = {'file': './Rick_Astley_Never_Gonna_Give_You_Up.mp4'}
+    r = requests.post("http://127.0.0.1:8080/manage", data=data)
+    r = requests.get("http://127.0.0.1:8080/manage")
+    assert 'test' in r.content.decode('UTF-8')
+
