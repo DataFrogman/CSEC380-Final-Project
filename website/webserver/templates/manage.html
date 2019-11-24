@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Tiger Advanced - Manage</title>
-    <link rel="stylesheet" href="/static/homepage.css" type="text/css">
+    <link rel="stylesheet" href="/static/manage.css" type="text/css">
 </head>
 <body>
 
@@ -21,30 +21,26 @@
         <input type=submit value=Upload>
 </div>
 
-<div class="vids">
-    <div class="vidgroup">
-        
-    <tr>
-        {% for video in videos %}
-        <td>
-            <section>
+<div class="videos">
+    {% if videos|length < 1 %}
+    <h3>No Videos to Display!</h3>
+    {% endif %}
+    {% for video in videos %}
+    <div class="indv-video">
                 <form action="/video" method="POST" style="border: none;">
                     <input type="hidden" name="videoURL" value="{{ video.get('VideoURL') }}">
                     <input type="hidden" name="videoTitle" value="{{ video.get('VideoTitle') }}">
                     <input type="hidden" name="videoUser" value="{{ video.get('VideoUser') }}">
                     <input type="hidden" name="dateUploaded" value="{{ video.get('DateUploaded') }}">
-                    <button style="background: url(static/play_button.png);width: 400px;height: 290px;background-size: 100%;"></button>
-                 </form>
-                <h3> {{ video.get("VideoTitle") }} </h3>
-                <p> {{ video.get("VideoUser") }}, {{ video.get("DateUploaded") }}</p>
+                    <button> 
+                    {{ video.get("VideoTitle") }} -- {{ video.get("VideoUser") }}, {{ video.get("DateUploaded") }}
+                    </button>
+                </form>
                 <a href="{{ url_for('delete', videoid = video.get('VideoID')) }}" method="POST">
                     <img border="0px" src="static/images/delete.png" width="15px" height="15px">
                 </a>
-            </section>
-        </td>
-        {% endfor %}
     </div>
+    {% endfor %}
 </div>
-</hr>
 </body>
 </html>

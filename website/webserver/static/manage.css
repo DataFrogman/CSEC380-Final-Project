@@ -13,9 +13,11 @@ h2 {
   
 h3 {
     height: 30px;
+    width: 280px;
     color: #000;
     font-family: Calibri;
     font-size: 30px;
+    line-height: 30px;
     float: left;
 }
 
@@ -28,28 +30,8 @@ input[type=text], input[type=password] {
     box-sizing: border-box;
 }
 
-.video-image {
-    text-align: center;
-}
-
-.video-text {
-    overflow: auto;
-}
-
 .videos {
     margin: 25px;
-}
-
-.indv-video {
-    margin 10px;
-    width: 450px;
-}
-
-.video-image button {
-    background: url(images/play_button.png);
-    background-size: 100%;
-    width: 400px;
-    height: 290px;
 }
 
 .btn-group button {

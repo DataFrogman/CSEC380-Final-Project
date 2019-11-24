@@ -3,29 +3,32 @@
     <title>Welcome to Tiger Advanced</title>
     <link rel="stylesheet" href="/static/login.css" type="text/css">
 </head>
+
 {% block body %}
 {% if session['logged_in'] %}
-You're logged in already!
+<p>You're logged in already!</p>
 {% else %}
+
 <body>
 <h2>TIGER ADVANCED</h2>
 <form action="/login" method="POST">
-<div class="imgcontainer">
-<img src="/static/tiger2.png" alt="Avatar" class="avatar">
-</div>
-<div class="container">
-<label for="username"><b>Username</b></label>
-<input type="text" value="" placeholder="Enter Username" name="username">
-<label class="login-field-icon fui-user" for="login-name"></label></div>
-</div>
-<div class="container">
-<label for="password"><b>Password</b></label>
-<input type="password" value="" placeholder="Enter Password" name="password">
-<label class="login-field-icon fui-lock" for="login-pass"></label></div>
-</div>
-<button type="submit" value="Log in">Login</button>
+	<div class="imgcontainer">
+		<img src="/static/images/tiger2.png" alt="Avatar" class="avatar">
+	</div>
+	<div class="container">
+		<label for="username"><b>Username</b></label>
+		<input type="text" value="" placeholder="Enter Username" name="username">
+		<label class="login-field-icon fui-user" for="login-name"></label></div>
+	</div>
+	<div class="container">
+		<label for="password"><b>Password</b></label>
+		<input type="password" value="" placeholder="Enter Password" name="password">
+		<label class="login-field-icon fui-lock" for="login-pass"></label></div>
+	</div>
+	<button type="submit" value="Log in">Login</button>
 </form>
 </body>
+
 {% endif %}
 {% endblock %}
 </html>

@@ -12,28 +12,27 @@
     <form action="/manage" method="GET"><button>Manage</button></form>
     <form action="/logout" method="GET"><button>Log Out</button></form>
 </div>
-<div class="vids">
-    <div class="vidgroup">     
-    <tr>
-        {% if videos|length < 1 %}
-            <h2>No Videos to Display!</h2>
-        {% endif %}
-        {% for video in videos %}
-        <td>
-            <section>
-                <form action="/video" method="POST" style="border: none;">
-                    <input type="hidden" name="videoURL" value="{{ video.get('VideoURL') }}">
-                    <input type="hidden" name="videoTitle" value="{{ video.get('VideoTitle') }}">
-                    <input type="hidden" name="videoUser" value="{{ video.get('VideoUser') }}">
-                    <input type="hidden" name="dateUploaded" value="{{ video.get('DateUploaded') }}">
-                    <button style="background: url(static/play_button.png);width: 400px;height: 290px;background-size: 100%;"></button>
-                 </form>
-                <h3> {{ video.get("VideoUser") }}, {{ video.get("DateUploaded") }}</h3>
-            </section>
-        </td>
-        {% endfor %}
+<div class="videos">
+    {% if videos|length < 1 %}
+    <h3>No Videos to Display!</h3>
+    {% endif %}
+    {% for video in videos %}
+    <div class="indv-video">     
+        <div class="video-image">
+        <form action="/video" method="POST" style="border: none;">
+            <input type="hidden" name="videoURL" value="{{ video.get('VideoURL') }}">
+            <input type="hidden" name="videoTitle" value="{{ video.get('VideoTitle') }}">
+            <input type="hidden" name="videoUser" value="{{ video.get('VideoUser') }}">
+            <input type="hidden" name="dateUploaded" value="{{ video.get('DateUploaded') }}">
+            <button></button>
+        </form>
+        </div>
+        <div class="video-text">
+            <h3> {{ video.get("VideoTitle") }} </h3>
+            <h4> {{ video.get("VideoUser") }}, {{ video.get("DateUploaded") }}</h4>
+        </div>
+    {% endfor %}
     </div>
 </div>
-</hr>
 </body>
 </html>
