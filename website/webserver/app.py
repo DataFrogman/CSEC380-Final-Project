@@ -59,13 +59,28 @@ conn.close()
 def home():
     return render_template('login.html')
 
-@app.route("/homepage", methods=['GET','POST'])
+
+@app.route("/homepage")
 def mainpage():
     cursor, conn = connection()
     if 'username' in session:
         videos=[]
         videos = getvideos(cursor, conn)
-        # videos.append(getothervideos())
+        cursor.close()
+        conn.close()
+        return render_template('homepage.html', username = session['username'], videos = videos)
+    else:
+        cursor.close()
+        conn.close()
+    return redirect(url_for('login'))
+
+
+@app.route("/manage", methods=['GET','POST'])
+def manage():
+    cursor, conn = connection()
+    if 'username' in session:
+        videos = []
+        videos = getvideos(cursor, conn)
         if request.method == "POST":
             target = "static"
             link = request.form.get('linkupload', None)
@@ -77,7 +92,7 @@ def mainpage():
                 with open(destination, 'wb') as f:
                     if not localfile.endswith(".mp4"):
                         flash("Only MP4 files are supported, sorry!")
-                        return render_template('homepage.html', username = session['username'], videos = videos)
+                        return render_template('manage.html', username = session['username'], videos = videos)
                     destination = "/".join([target, localfile])
                     print("Storing in database . . . " + destination, file=sys.stderr)
                     shutil.copyfileobj(r.raw, f)
@@ -92,13 +107,13 @@ def mainpage():
                     conn.commit()
                     cursor.close()
                     conn.close()
-                    return render_template('homepage.html', username = session['username'], videos = videos)
+                    return render_template('manage.html', username = session['username'], videos = videos)
             else:
                 for f in request.files.getlist("file"):
                     filename = f.filename
                     if not filename.endswith(".mp4"):
                         flash("Please upload a file with .mp4 extension.")
-                        return render_template('homepage.html', username = session['username'], videos = videos)
+                        return render_template('manage.html', username = session['username'], videos = videos)
                     destination = "/".join([target, filename])
                     print("Storing in database . . . " + destination, file=sys.stderr)
                     f.save(destination)
@@ -113,15 +128,15 @@ def mainpage():
                     conn.commit()
                     cursor.close()
                     conn.close()
-                    return render_template('homepage.html', username = session['username'], videos = videos)
+                    return render_template('manage.html', username = session['username'], videos = videos)
         cursor.close()
         conn.close()
-        return render_template('homepage.html', username = session['username'], videos = videos)
-        #return render_template('homepage.html')
+        return render_template('manage.html', username = session['username'], videos=videos)
     else:
         cursor.close()
         conn.close()
     return redirect(url_for('login'))
+
 
 @app.route("/video", methods=['POST'])
 def video():
@@ -146,63 +161,57 @@ def getvideos(cursor, conn):
     print(json_data, file=sys.stderr)
     return json_data
 
-def getothervideos():
-    cursor, conn = connection()
-    if 'username' in session:
-
-        username = request.get_json(force=True)
-        username = username['username']
-        cursor.execute("SELECT UserID FROM users WHERE Username='{}'".format(username))
-        userid = cursor.fetchone()
-        cursor.execute("SELECT * FROM video WHERE UserID!={}".format(userid[0]))
-        rows = cursor.fetchall()
-        row_headers=[x[0] for x in cursor.description]
-        json_data=[]
-        for result in rows:
-            json_data.append(dict(zip(row_headers,result)))
-        print(json_data, file=sys.stderr)
-        cursor.close()
-        conn.close()
-        return jsonify(json_data)
-    cursor.close()
-    conn.close()
-    return redirect(url_for('login'))
+"""
+def getmyvideos(cursor, conn):
+    json_data = []
+    username = request.get_json(force=True)
+    username = username['username']
+    cursor.execute("SELECT UserID FROM users WHERE Username='{}'".format(username))
+    userid = cursor.fetchone()
+    cursor.execute("SELECT * FROM videos WHERE UserID='{}'".format(userid[0]))
+    rows = cursor.fetchall()
+    row_headers = [x[0] for x in cursor.description]
+    for result in rows:
+        json_data.append(dict(zip(row_headers, result)))
+    print(json_data, file=sys.stderr)
+    return json_data
+"""
 
 @app.route('/delete/<videoid>')
 def delete(videoid):
     cursor, conn = connection()
     print(videoid, file=sys.stderr)
-    cursor.execute("SELECT VideoUser FROM video WHERE VideoID={}".format(videoid))
+    cursor.execute("SELECT VideoUser FROM videos WHERE VideoID={}".format(videoid))
     tempVideoUser = cursor.fetchone()[0]
     if 'username' in session:
         if session['username'] != tempVideoUser:
             cursor.close()
             conn.close()
-            return redirect(url_for('homepage'))
-        cursor.execute("SELECT VideoTitle FROM video WHERE VideoID={}".format(videoid))
+            return redirect(url_for('manage'))
+        cursor.execute("SELECT VideoTitle FROM videos WHERE VideoID={}".format(videoid))
         tempFile = cursor.fetchone()
         tempFile = tempFile[0]
         print(tempFile, file=sys.stderr)
         if tempFile == '':
-            return redirect(url_for('homepage'))
-        cursor.execute("SELECT VideoUser FROM video WHERE VideoID={}".format(videoid))
+            return redirect(url_for('manage'))
+        cursor.execute("SELECT VideoUser FROM videos WHERE VideoID={}".format(videoid))
         tempVideoUser = cursor.fetchone()[0]
         if session['username'] != tempVideoUser:
             flash('Cannot delete video uploaded by someone else')
             conn.commit()
             cursor.close()
             conn.close()
-            return redirect(url_for('homepage'))
-        cursor.execute("DELETE FROM video WHERE VideoID={}".format(videoid))
+            return redirect(url_for('manage'))
+        cursor.execute("DELETE FROM videos WHERE VideoID={}".format(videoid))
         cursor.execute("SELECT UserID FROM users WHERE Username='{}'".format((session['username'])))
         userid = cursor.fetchone()
-        cursor.execute("UPDATE users SET TotalVideoCount = TotalVideoCount - \
+        cursor.execute("UPDATE users SET TotalVids = TotalVids - \
                     1 WHERE Username = '{}'".format(str(session['username'])))
         conn.commit()
         os.remove("static/"+tempFile)
         cursor.close()
         conn.close()
-        return redirect(url_for('homepage'))
+        return redirect(url_for('manage'))
     cursor.close()
     conn.close()
     return redirect(url_for('login'))

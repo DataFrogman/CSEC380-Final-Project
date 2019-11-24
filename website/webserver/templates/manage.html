@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Welcome to Tiger Advanced</title>
+    <title>Tiger Advanced - Manage</title>
     <link rel="stylesheet" href="/static/homepage.css" type="text/css">
 </head>
 <body>
@@ -12,12 +12,19 @@
     <form action="/manage" method="GET"><button>Manage</button></form>
     <form action="/logout" method="GET"><button>Log Out</button></form>
 </div>
+
+<div class="uploads">
+    <form method=post enctype=multipart/form-data>
+        <p>Upload from Computer or Upload from Link</p>
+        Upload from Computer:  <input type=file name=file><br>
+        Upload from Link:      <input type="text" name="linkupload"><br>
+        <input type=submit value=Upload>
+</div>
+
 <div class="vids">
-    <div class="vidgroup">     
+    <div class="vidgroup">
+        
     <tr>
-        {% if videos|length < 1 %}
-            <h2>No Videos to Display!</h2>
-        {% endif %}
         {% for video in videos %}
         <td>
             <section>
@@ -28,7 +35,11 @@
                     <input type="hidden" name="dateUploaded" value="{{ video.get('DateUploaded') }}">
                     <button style="background: url(static/play_button.png);width: 400px;height: 290px;background-size: 100%;"></button>
                  </form>
-                <h3> {{ video.get("VideoUser") }}, {{ video.get("DateUploaded") }}</h3>
+                <h3> {{ video.get("VideoTitle") }} </h3>
+                <p> {{ video.get("VideoUser") }}, {{ video.get("DateUploaded") }}</p>
+                <a href="{{ url_for('delete', videoid = video.get('VideoID')) }}" method="POST">
+                    <img border="0px" src="static/images/delete.png" width="15px" height="15px">
+                </a>
             </section>
         </td>
         {% endfor %}

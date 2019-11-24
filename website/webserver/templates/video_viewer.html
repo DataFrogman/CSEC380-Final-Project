@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Tiger Advanced</title>
+<title>Tiger Advanced - {{ videoTitle }}</title>
     <link rel="stylesheet" href="/static/homepage.css" type="text/css">
 </head>
 <body>
@@ -10,7 +10,7 @@
 
 <div class="btn-group">
     <form action="/homepage" method="GET"><button>Home</button></form>
-    <button>Manage</button>
+    <form action="/manage" method="GET"><button>Manage</button></form>
     <form action="/logout" method="GET"><button>Log Out</button></form>
 </div>
 

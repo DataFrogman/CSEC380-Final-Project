@@ -30,6 +30,11 @@ body {
     cursor: pointer; /* Pointer/hand icon */
     float: left; /* Float the buttons side by side */
     width: 25%;
+    justify-content: center;
+  }
+
+  .video-box {
+    justify-content: center;
   }
 
   /* Clear floats (clearfix hack) */
