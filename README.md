@@ -23,7 +23,7 @@ Sprint | Activity | Description | Due Date | Completion
 5 | 6 | Tests for SSRF vulnerability | November 10th | Backlog
 5 | 6 | Writeup for activity 6 | November 10th | Yes
 6 | 7 | Introduce Command Injection Vulnerability | November 24th | Yes
-6 | 7 | Tests for command injection | November 24th | No
+6 | 7 | Tests for command injection | November 24th | Yes
 6 | 7 | Writeup for activity 7 | November 24th | Yes
 7 | All | Verification that all components and tests work | November 24th (Due Date) | No
 7 | All | Review of all writeups | November 24th (Due Date) | Yes
