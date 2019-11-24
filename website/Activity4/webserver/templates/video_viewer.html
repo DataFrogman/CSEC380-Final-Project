@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tiger Advanced</title>
+    <link rel="stylesheet" href="/static/homepage.css" type="text/css">
+</head>
+<body>
+
+<h2>TIGER ADVANCED</h2>
+
+<div class="btn-group">
+    <form action="/homepage" method="GET"><button>Home</button></form>
+    <button>Manage</button>
+    <form action="/logout" method="GET"><button>Log Out</button></form>
+</div>
+
+<div class="video-box">
+    <video width="60%" controls autoplay allowfullscreen>
+        <source src="{{ videoURL }}" type="video/mp4">
+    </video>
+    <h3>{{ videoTitle }}</h3>
+    <h4> {{ videoUser }}, {{ dateUploaded }} </h4>
+</div>
+</body>
+</html>
