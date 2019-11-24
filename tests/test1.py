@@ -29,7 +29,7 @@ def test_uploadVid():
     sess = requests.session()
     data = {'username': 'test', 'password': 'test'}
     r = sess.post("http://127.0.0.1:8080/login", data=data)
-    data = {'file': open('Rick_Astley_Never_Gonna_Give_You_Up.mp4', 'rb')}
+    data = {'file': open('tests/Rick_Astley_Never_Gonna_Give_You_Up.mp4', 'rb')}
     r = sess.post("http://127.0.0.1:8080/manage", data=data)
     r = sess.get("http://127.0.0.1:8080/manage")
     assert 'test' in r.text
