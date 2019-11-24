@@ -9,7 +9,7 @@ https://github.com/DataFrogman/CSEC380-Final-Project/blob/master/tests/test1.py
 
 2. How do you ensure that users that navigate to the protected pages cannot bypass authentication requirements?
 
-ANSWER
+Users cannot bypass authentication requirements because they need a valid sessionID.
 
 3. How do you protect against session fixation?
 
