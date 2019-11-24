@@ -8,7 +8,7 @@ import time
 
 def test_AuthTest():
     data = {'username': 'test', 'password': 'test'}
-    r = requests.post("http://localhost:8080/login", data=data)
+    r = requests.post("http://127.0.0.1:8080/login", data=data)
     print("Authentication tests----------------")
     assert 'Welcome' in r.text
     print("Correct authentication: passed")
