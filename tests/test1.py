@@ -33,7 +33,7 @@ def test_uploadAndDeleteVid():
     r = sess.post("http://127.0.0.1:8080/manage", files=data)
     r = sess.get("http://127.0.0.1:8080/homepage")
     assert 'Rick_Astley_Never_Gonna_Give_You_Up.mp4' in r.content.decode('UTF-8')
-    r = sess.post("http://127.0.0.1:8080/delete/1")
+    r = sess.post("http://127.0.0.1:8080/delete/0")
     r = sess.get("http://127.0.0.1:8080/homepage")
     assert 'No Videos to Display!' in r.content.decode('UTF-8')
 
