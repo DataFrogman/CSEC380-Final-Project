@@ -1,4 +1,4 @@
-from flask import Flask, flash, jsonify, render_template, request, session, redirect, url_for
+from flask import Flask, flash, jsonify, render_template, request, session, redirect, url_for, send_file
 import mysql.connector
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
@@ -212,6 +212,11 @@ def delete(videoid):
 @app.route("/invalidcreds", methods=['GET','POST'])
 def invalidcreds():
     return render_template('invalidcreds.html')
+
+@app.route("/downloadVideo/<path:filename>", methods=['GET','POST'])
+def downloadVideo(filename):
+    return send_file(filename, as_attachment=False)
+
 
 @app.route("/login", methods=['GET','POST'])
 @limiter.limit("14400/day;600/hour;10/minute")

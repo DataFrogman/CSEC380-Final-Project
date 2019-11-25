@@ -133,7 +133,7 @@ def video():
     if 'username' in session:
         url = request.form["videoURL"]
         
-        return render_template("video_viewer.html", videoURL=url)
+        return render_template("video_viewer.html", file)
     else:
         return redirect(url_for("login"))
 
@@ -146,6 +146,14 @@ def getvideos(cursor, conn):
         json_data.append(dict(zip(row_headers,result)))
     print(json_data, file=sys.stderr)
     return json_data
+
+@app.route("/downloadVideo/<filename>", methods=['GET','POST'])
+def downloadVideo(filename):
+    if 'username' in session:
+        filename = "/" + filename
+        return send_file(filename, as_attachment=False)
+    else:
+        return redirect(url_for("login"))
 
 def getothervideos():
     cursor, conn = connection()
